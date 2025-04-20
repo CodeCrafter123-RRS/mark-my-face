@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Attendance System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <style>
+    /* Make page take full height */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .button-container {
+      margin-top: 40px;
+    }
+
+    a.button {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 16px;
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    a.button:hover {
+      background-color: #0056b3;
+    }
+
+    footer.footer {
+      background-color: #0033a0;
+      color: white;
+      padding: 30px 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 60px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Banner" style="max-width: 200px; margin-bottom: 20px; border-radius: 12px;">
+
+    <h1>🎓 Smart Attendance System Using Face Recognition</h1>
+
+    <div class="button-container">
+      <a href="{{ url_for('start_attendance') }}" class="button">📷 Start Attendance</a>
+      <a href="{{ url_for('register') }}" class="button">🧑‍💼 Register Student</a>
+      <a href="{{ url_for('view_students') }}" class="button">📋 View Registered Students</a>
+      <a href="{{ url_for('attendance') }}" class="button">📊 View Attendance Records</a>
+      <a href="{{ url_for('login') }}" class="button">🔐 Admin Login</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <img src="{{ url_for('static', filename='images/nist_logo.png') }}" alt="NIST Logo" class="footer-logo">
+    <p>&copy; 2025 Smart Attendance System | Made with <span style="color: red;">&#10084;</span> using Flask + OpenCV</p>
+  </footer>
+
+</body>
+</html>

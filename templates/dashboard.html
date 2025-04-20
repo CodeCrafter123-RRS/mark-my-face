@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | Smart Attendance</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="dashboard">
+    <h2>Attendance Dashboard</h2>
+    <canvas id="attendanceChart" width="400" height="400"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+    const attendanceChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Present', 'Absent'],
+        datasets: [{
+          label: 'Attendance Overview',
+          data: [{{ present }}, {{ absent }}],
+          backgroundColor: ['#4CAF50', '#F44336'],
+          borderWidth: 1
+        }]
+      }
+    });
+  </script>
+</body>
+</html>

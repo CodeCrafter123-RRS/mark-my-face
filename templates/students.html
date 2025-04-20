@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registered Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9fbfd;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b5ed7;
+            color: white;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            color: purple;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <img src="{{ url_for('static', filename='images/nist_logo.png') }}" alt="NIST Logo" style="width: auto; height: 400;">
+    </div>
+        <h2>Registered Students</h2>
+
+    <div class="container">
+        <table>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Roll Number</th>
+                <th>Phone Number</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='photos/' + student.photo) }}" alt="Photo"></td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.roll }}</td>
+                <td>{{ student.phone }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <a class="back-link" href="{{ url_for('index') }}"class="button">← Back</a>
+
+</body>
+</html>

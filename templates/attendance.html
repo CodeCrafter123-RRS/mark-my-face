@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Attendance Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            padding: 30px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header img {
+            width: 70px;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-top: 10px;
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: center;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        td img {
+            width: 50px;
+            border-radius: 50%;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='images/nist_logo.png') }}" alt="Logo">
+            <h1>Student Attendance Records</h1>
+        </div>
+
+        <table>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Status</th>
+                <th>Time</th>
+                <th>Date</th>
+            </tr>
+            {% for record in attendance %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='photos/' ~ record['photo']) }}" alt="Photo"></td>
+                <td>{{ record['name'] }}</td>
+                <td>{{ record['roll'] }}</td>
+                <td>{{ record['status'] }}</td>
+                <td>{{ record['time'] }}</td>
+                <td>{{ record['date'] }}</td>
+                <td>
+                    {% if record['status'] == "Present" %}
+                      ✅
+                    {% else %}
+                      ❌ 
+                    {% endif %}
+                </td>                
+                  
+            </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{{ url_for('index') }}" class="back-link">&larr; Back to Home</a>
+    </div>
+</body>
+</html>
